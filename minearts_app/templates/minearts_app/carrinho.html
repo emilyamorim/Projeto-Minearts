@@ -1,24 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho</title>
+{% extends 'minearts_app/base.html' %}
+{% load static %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'minearts_app/css/carrinho.css' %}"/>
+{% endblock %}
 
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/carrinho.css">
-    <link rel="stylesheet" href="/src/css/footer.css">
-</head>
-<body>
-
-    <header id="header"></header>
-
-    <!-- HEADER -->
-
+{% block content %}
     <main class="main-carrinho">
 
         <h1 class="titulo-carrinho">Minhas  Compras</h1>
@@ -206,10 +193,9 @@
         </section>
 
     </main>
+{% endblock %}
 
-    <!-- FOOTER -->
-    <footer id="footer"></footer>
-
+{% block extra_js %}
     <script src="../js/main.js"></script>
 
     <script>
@@ -234,5 +220,5 @@
             alert('Redirecionando para o pagamento...');
         });
     </script>
-</body>
-</html>
+{% endblock %}
+

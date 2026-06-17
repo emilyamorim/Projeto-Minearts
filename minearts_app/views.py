@@ -89,3 +89,6 @@ def produtos(request):
         'ordem_atual': ordem_selecionada,
     }
     return render(request, 'minearts_app/produtos.html', contexto)
+
+def carrinho(request):
+    return render(request, 'minearts_app/carrinho.html')

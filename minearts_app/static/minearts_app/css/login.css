@@ -1,0 +1,416 @@
+/*
+========================================================
+RESET
+========================================================
+*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/*
+========================================================
+BODY
+========================================================
+*/
+
+body{
+    width:100%;
+    min-height:100vh;
+
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    /*
+    ========================================
+    IMAGEM DE FUNDO
+    ========================================
+    */
+    background-image:url("../img/background-login.png");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+/*
+========================================================
+OVERLAY ESCURO
+========================================================
+*/
+
+.overlay{
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(73, 41, 102, 0.35);
+
+    z-index:1;
+}
+
+/*
+========================================================
+HEADER
+========================================================
+*/
+
+.header{
+    width:100%;
+    height:100px;
+
+    background:white;
+
+    position:absolute;
+    top:0;
+    left:0;
+
+    z-index:5;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 60px;
+}
+
+/*
+========================================================
+LOGO HEADER
+========================================================
+*/
+
+.header-logo{
+    width:120px;
+}
+
+/*
+========================================================
+MENU
+========================================================
+*/
+
+.menu{
+    display:flex;
+    gap:40px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:black;
+
+    font-size:18px;
+}
+
+.menu .active{
+    font-weight:bold;
+
+    border-bottom:2px solid #7f64a0;
+}
+
+/*
+========================================================
+AÇÕES HEADER
+========================================================
+*/
+.header-actions{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:22px;
+}
+
+/*
+========================================================
+SEARCH
+========================================================
+*/
+.search-box{
+    width:240px;
+    height:45px;
+
+    border:2px solid black;
+    border-radius:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 18px;
+
+    background:white;
+
+    margin-right:10px; /* afasta do carrinho */
+}
+
+.search-box input{
+    border:none;
+    outline:none;
+
+    width:100%;
+
+    font-size:14px;
+}
+
+.search-box span{
+    font-size:22px;
+}
+
+/*
+========================================================
+CARRINHO
+========================================================
+*/
+.cart{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-right:8px;
+}
+
+.cart-icon{
+    width:24px;
+    height:24px;
+
+    object-fit:contain;
+
+    display:block;
+
+    cursor:pointer;
+}
+/*
+========================================================
+BOTÕES HEADER
+========================================================
+*/
+.login-btn{
+    text-decoration:none;
+    color:black;
+
+    font-size:18px;
+
+    margin-right:5px;
+}
+
+.register-btn{
+    text-decoration:none;
+
+    background:#7f64a0;
+    color:white;
+
+    padding:10px 22px;
+
+    border-radius:20px;
+
+    font-size:18px;
+}
+
+/*
+========================================================
+CARD LOGIN
+========================================================
+*/
+
+.login-container{
+    width:530px;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.90);
+
+    backdrop-filter:blur(6px);
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:80px;
+}
+
+/*
+========================================================
+LOGO CARD
+========================================================
+*/
+
+.logo{
+    width:140px;
+
+    display:block;
+
+    margin:0 auto 20px auto;
+}
+
+/*
+========================================================
+TÍTULO
+========================================================
+*/
+
+.login-container h1{
+    font-size:58px;
+
+    margin-bottom:10px;
+}
+
+/*
+========================================================
+SUBTÍTULO
+========================================================
+*/
+
+.login-container p{
+    color:#666;
+
+    font-size:18px;
+
+    margin-bottom:35px;
+}
+
+/*
+========================================================
+FORM
+========================================================
+*/
+
+form{
+    display:flex;
+    flex-direction:column;
+}
+
+/*
+========================================================
+LABEL
+========================================================
+*/
+
+label{
+    font-size:18px;
+
+    margin-bottom:10px;
+    margin-top:15px;
+}
+
+/*
+========================================================
+INPUT BOX
+========================================================
+*/
+
+body{
+    width:100%;
+    min-height:100vh;
+
+    background-image:url("../img/background-login.png");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.input-box{
+    width:100%;
+    height:55px;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    background:#edf1f8;
+
+    border-radius:8px;
+
+    padding:0 14px;
+
+    margin-bottom:10px;
+}
+
+
+
+.icon{
+    width: 30px;
+    height: 30px;
+
+    object-fit:contain;
+
+    opacity:0.7;
+
+    flex-shrink:0;
+}
+
+
+.input-box input{
+    width:100%;
+    height:100%;
+
+    border:none;
+    outline:none;
+
+    background:transparent;
+
+    font-size:16px;
+
+    color:#555;
+}
+
+
+
+button{
+    width:100%;
+    height:55px;
+
+    border:none;
+
+    margin-top:20px;
+
+    background:#b3a5c7;
+
+    border-radius:8px;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+button:hover{
+    background:#a18dbd;
+}
+
+
+
+.links{
+    margin-top:30px;
+
+    display:flex;
+    justify-content:space-between;
+}
+
+.links a{
+    text-decoration:none;
+
+    color:#666;
+
+    font-size:16px;
+}
+
+.links strong{
+    color:#7f64a0;
+}

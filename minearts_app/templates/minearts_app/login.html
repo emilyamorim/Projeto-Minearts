@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/login.css">
+
+    <title>Login</title>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <!-- LOGO HEADER -->
+        <img 
+            src="../img/Mineart.s Logo.svg" 
+            alt="Logo"
+            class="header-logo"
+        >
+
+        <!-- MENU -->
+        <nav class="menu">
+            <a href="/index.html" class="active">Início</a>
+            <a href="/src/pages/produtos.html">Produtos</a>
+            <a href="/src/pages/sobre.html">Sobre</a>
+        </nav>
+
+        <!-- AÇÕES -->
+        <div class="header-actions">
+
+            <!-- PESQUISA -->
+            <div class="search-box">
+                <input type="text" placeholder="Digite aqui...">
+                <span>⌕</span>
+            </div>
+
+            <!-- CARRINHO -->
+            <div class="cart">
+                <img 
+                    src="../img/icon/Icone - carrinho.svg"
+                    alt="Carrinho"
+                    class="cart-icon"
+                >
+            </div>
+
+            <!-- LOGIN -->
+            <a href="login.html" class="login-btn">
+                Entrar
+            </a>
+
+            <!-- CADASTRO -->
+            <a href="cadastro.html" class="register-btn">
+                Cadastro
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- OVERLAY -->
+    <div class="overlay"></div>
+
+    <!-- LOGIN -->
+    <div class="login-container">
+
+        <!-- LOGO -->
+        <img 
+            src="../img/Mineart.s Logo.svg"
+            class="logo"
+            alt="Logo"
+        >
+
+        <h1>Entrar</h1>
+
+        <p>Acesse sua conta ou crie uma nova.</p>
+
+        <form>
+
+            <!-- EMAIL -->
+            <label>E-mail ou Usuário</label>
+
+            <div class="input-box">
+
+                <img 
+                    src="../img/icon/user-icon.png"
+                    class="icon"
+                    alt="Usuário"
+                >
+
+                <input 
+                    type="text"
+                    placeholder="exemplo@gmail.com"
+                >
+
+            </div>
+
+            <!-- SENHA -->
+            <label>Senha</label>
+
+            <div class="input-box">
+
+                <img 
+                    src="../img/icon/lock-icon.png"
+                    class="icon"
+                    alt="Senha"
+                >
+
+                <input 
+                    type="password"
+                    placeholder="12345"
+                >
+
+            </div>
+
+            <!-- BOTÃO -->
+            <button type="submit">
+                Entrar
+            </button>
+
+        </form>
+
+        <!-- LINKS -->
+        <div class="links">
+
+            <a href="#">
+                Esqueceu a senha?
+            </a>
+
+            <a href="#">
+                Não tem conta?
+                <strong>Cadastre-se</strong>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

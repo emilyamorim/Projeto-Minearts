@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/login.css">
+
+    <title>Cadastro</title>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <!-- LOGO -->
+        <img 
+            src="../img/Mineart.s Logo.svg" 
+            alt="Logo"
+            class="header-logo"
+        >
+
+        <!-- MENU -->
+        <nav class="menu">
+            <a href="/index.html" class="active">Início</a>
+            <a href="/src/pages/produtos.html">Produtos</a>
+            <a href="/src/pages/sobre.html">Sobre</a>
+        </nav>
+
+        <!-- AÇÕES -->
+        <div class="header-actions">
+
+            <!-- PESQUISA -->
+            <div class="search-box">
+                <input type="text" placeholder="Digite aqui...">
+                <span>⌕</span>
+            </div>
+
+            <!-- CARRINHO -->
+            <div class="cart">
+                <img 
+                    src="../img/icon/Icone - carrinho.svg"
+                    alt="Carrinho"
+                    class="cart-icon"
+                >
+            </div>
+
+            <!-- LOGIN -->
+            <a href="login.html" class="login-btn">
+                Entrar
+            </a>
+
+            <!-- CADASTRO -->
+            <a href="cadastro.html" class="register-btn">
+                Cadastro
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- OVERLAY -->
+    <div class="overlay"></div>
+
+    <!-- CONTAINER -->
+    <div class="login-container cadastro-container">
+
+        <!-- LOGO -->
+        <img 
+            src="../img/Mineart.s Logo.svg"
+            class="logo"
+            alt="Logo"
+        >
+
+        <h1>Cadastre-se</h1>
+
+        <p>Preencha os dados abaixo para criar sua conta.</p>
+
+        <form>
+
+            <!-- NOME -->
+            <label>Nome Completo</label>
+
+            <div class="input-box">
+
+                <img 
+                    src="../img/icon/user-icon.png"
+                    class="icon"
+                    alt="Usuário"
+                >
+
+                <input 
+                    type="text"
+                    placeholder="Nome"
+                >
+
+            </div>
+
+            <!-- EMAIL -->
+            <label>E-mail</label>
+
+            <div class="input-box">
+
+                <img 
+                    src="../img/icon/email-icon.png"
+                    class="icon"
+                    alt="Email"
+                >
+
+                <input 
+                    type="email"
+                    placeholder="Nome@exemplo.com"
+                >
+
+            </div>
+
+            <!-- DATA + CELULAR -->
+            <div class="row">
+
+                <!-- DATA -->
+                <div class="field">
+
+                    <label>Data de Nascimento</label>
+
+                    <div class="input-box">
+
+                        <img 
+                            src="../img/icon/calendar-icon.png"
+                            class="icon"
+                            alt="Calendário"
+                        >
+
+                        <input type="date">
+
+                    </div>
+
+                </div>
+
+                <!-- CELULAR -->
+                <div class="field">
+
+                    <label>Celular</label>
+
+                    <div class="input-box">
+
+                        <img 
+                            src="../img/icon/phone-icon.png"
+                            class="icon"
+                            alt="Celular"
+                        >
+
+                        <input 
+                            type="text"
+                            placeholder="(84) 99999-9999"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- SENHAS -->
+            <div class="row">
+
+                <!-- SENHA -->
+                <div class="field">
+
+                    <label>Senha</label>
+
+                    <div class="input-box">
+
+                        <img 
+                            src="../img/icon/lock-icon.png"
+                            class="icon"
+                            alt="Senha"
+                        >
+
+                        <input 
+                            type="password"
+                            placeholder="********"
+                        >
+
+                    </div>
+
+                </div>
+
+                <!-- CONFIRMAR -->
+                <div class="field">
+
+                    <label>Confirme sua Senha</label>
+
+                    <div class="input-box">
+
+                        <img 
+                            src="../img/icon/lock-icon.png"
+                            class="icon"
+                            alt="Senha"
+                        >
+
+                        <input 
+                            type="password"
+                            placeholder="********"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- BOTÃO -->
+            <button type="submit">
+                Cadastrar
+            </button>
+
+        </form>
+
+        <!-- LINK -->
+        <div class="links center-link">
+
+            <a href="login.html">
+                Já tem uma conta?
+                <strong>Faça Login</strong>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

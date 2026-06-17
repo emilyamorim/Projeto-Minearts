@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/carrinho.css">
+    <link rel="stylesheet" href="/src/css/footer.css">
+</head>
+<body>
+
+    <header id="header"></header>
+
+    <!-- HEADER -->
+
+    <main class="main-carrinho">
+
+        <h1 class="titulo-carrinho">Minhas  Compras</h1>
+
+        <!-- LISTA DE ITENS DO CARRINHO -->
+        <section class="secao-carrinho">
+            <div class="lista-carrinho">
+
+                <div class="item-carrinho">
+                    <div class="item-img">
+                        <img src="../img/carrinho/04.Pulseiraoceano.jpg" alt="Pulseira oceano">
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-nome">Pulseira oceano</h3>
+                        <p class="item-preco">R$ 50,00</p>
+                    </div>
+                    <div class="item-quantidade">
+                        <span class="quantidade-label">Quantidade de itens: <span class="qtd-valor">2</span></span>
+                        <div class="controle-quantidade">
+                            <button class="btn-qtd btn-menos" onclick="alterarQtd(this, -1)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                            <span class="numero-qtd">1</span>
+                            <button class="btn-qtd btn-mais" onclick="alterarQtd(this, 1)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divisor">
+
+                <div class="item-carrinho">
+                    <div class="item-img">
+                        <img src="../img/carrinho/05ColarQuartzoRosa.jpg" alt="Colar Quartzo Rosa">
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-nome">Colar Quartzo Rosa</h3>
+                        <p class="item-preco">R$ 25,00</p>
+                    </div>
+                    <div class="item-quantidade">
+                        <span class="quantidade-label">Quantidade de itens: <span class="qtd-valor">1</span></span>
+                        <div class="controle-quantidade">
+                            <button class="btn-qtd btn-menos" onclick="alterarQtd(this, -1)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                            <span class="numero-qtd">1</span>
+                            <button class="btn-qtd btn-mais" onclick="alterarQtd(this, 1)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divisor">
+
+                <div class="item-carrinho">
+                    <div class="item-img">
+                        <img src="../img/carrinho/06ChaveiroChapéu doLuffy.webp" alt="Chaveiro Chapéu do Luffy">
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-nome">Chaveiro Chapéu do Luffy</h3>
+                        <p class="item-preco">R$ 25,00</p>
+                    </div>
+                    <div class="item-quantidade">
+                        <span class="quantidade-label">Quantidade de itens: <span class="qtd-valor">1</span></span>
+                        <div class="controle-quantidade">
+                            <button class="btn-qtd btn-menos" onclick="alterarQtd(this, -1)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                            <span class="numero-qtd">1</span>
+                            <button class="btn-qtd btn-mais" onclick="alterarQtd(this, 1)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divisor">
+
+                <div class="item-carrinho">
+                    <div class="item-img">
+                        <img src="../img/carrinho/07AmigurumiPolvo.webp" alt="Colar Quartzo Rosa">
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-nome">Amigurumi Polvo</h3>
+                        <p class="item-preco">R$ 25,00</p>
+                    </div>
+                    <div class="item-quantidade">
+                        <span class="quantidade-label">Quantidade de itens: <span class="qtd-valor">1</span></span>
+                        <div class="controle-quantidade">
+                            <button class="btn-qtd btn-menos" onclick="alterarQtd(this, -1)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                            <span class="numero-qtd">1</span>
+                            <button class="btn-qtd btn-mais" onclick="alterarQtd(this, 1)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divisor">
+
+            </div>
+        </section>
+
+        <!-- SUGESTÕES PARA VOCÊ -->
+        <section class="secao-sugestoes">
+            <h2 class="subtitulo-sugestoes">Sugestões para você</h2>
+
+            <div class="cards-sugestoes">
+
+                <div class="card-sugestao">
+                    <div class="card-sugestao-img">
+                        <span class="badge-novo">Novo</span>
+                        <img src="../img/carrinho/01BrincoConcha.jpg" alt="Brinco Concha">
+                    </div>
+                    <div class="card-sugestao-info">
+                        <h3 class="card-sugestao-nome">Brinco Concha</h3>
+                        <div class="card-sugestao-preco-linha">
+                            <p class="card-sugestao-preco">R$ 15,00</p>
+                            <button class="btn-adicionar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-sugestao">
+                    <div class="card-sugestao-img">
+                        <img src="../img/carrinho/02PulseiraBúzios.jpg" alt="Pulseira Búzios">
+                    </div>
+                    <div class="card-sugestao-info">
+                        <h3 class="card-sugestao-nome">Pulseira Búzios</h3>
+                        <div class="card-sugestao-preco-linha">
+                            <p class="card-sugestao-preco">R$ 22,00</p>
+                            <button class="btn-adicionar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-sugestao">
+                    <div class="card-sugestao-img">
+                        <img src="../img/carrinho/03TornozeleiraMar.jpg" alt="Tornozeleira Mar">
+                    </div>
+                    <div class="card-sugestao-info">
+                        <h3 class="card-sugestao-nome">Amigurumi Polvo</h3>
+                        <div class="card-sugestao-preco-linha">
+                            <p class="card-sugestao-preco">R$ 18,00</p>
+                            <button class="btn-adicionar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CUPOM + RESUMO -->
+        <section class="secao-resumo">
+            <div class="cupom-desconto">
+                <h3 class="cupom-titulo">Cupom de Desconto</h3>
+                <p class="cupom-subtitulo">Possui um código promocional? Insira aqui.</p>
+                <div class="cupom-input-linha">
+                    <input type="text" class="input-cupom" placeholder="Código do cupom">
+                    <button class="btn-aplicar">Aplicar</button>
+                </div>
+            </div>
+
+            <div class="resumo-pedido">
+                <div class="resumo-linha">
+                    <span class="resumo-label">Subtotal</span>
+                    <span class="resumo-valor">R$ 45,00</span>
+                </div>
+                <div class="resumo-linha">
+                    <span class="resumo-label">Cupom</span>
+                    <span class="resumo-valor resumo-desconto">R$ 5,00</span>
+                </div>
+                <div class="resumo-linha resumo-total">
+                    <span class="resumo-label-total">Total</span>
+                    <span class="resumo-valor-total">R$ 40,00</span>
+                </div>
+                <button class="btn-finalizar">Finalizar Compra</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer"></footer>
+
+    <script src="../js/main.js"></script>
+
+    <script>
+        function alterarQtd(btn, delta) {
+            const controle = btn.closest('.controle-quantidade');
+            const numeroEl = controle.querySelector('.numero-qtd');
+            const labelEl = btn.closest('.item-quantidade').querySelector('.qtd-valor');
+            let valor = parseInt(numeroEl.textContent);
+            valor = Math.max(1, valor + delta);
+            numeroEl.textContent = valor;
+            if (labelEl) labelEl.textContent = valor;
+        }
+
+        document.querySelector('.btn-aplicar').addEventListener('click', function() {
+            const input = document.querySelector('.input-cupom').value.trim();
+            if (input) {
+                alert('Cupom "' + input + '" aplicado!');
+            }
+        });
+
+        document.querySelector('.btn-finalizar').addEventListener('click', function() {
+            alert('Redirecionando para o pagamento...');
+        });
+    </script>
+</body>
+</html>

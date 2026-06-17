@@ -1,0 +1,96 @@
+{% extends 'minearts_app/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'minearts_app/css/produtos.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main class="container-produtos">
+        <section class="topo-produtos">
+            <h1 class="titulo-pagina" id="titulo-pagina">{{ nome_categoria }}</h1>
+            
+            <div class="filtros-categorias">
+                <button class="btn-filtro {% if categoria_atual == 'Todos' %}ativo{% endif %}">Todos</button>
+                <button class="btn-filtro {% if categoria_atual == 'Brincos' %}ativo{% endif %}">Brincos</button>
+                <button class="btn-filtro {% if categoria_atual == 'Chaveiros' %}ativo{% endif %}">Chaveiros</button>
+                <button class="btn-filtro {% if categoria_atual == 'Colares' %}ativo{% endif %}">Colares</button>
+                <button class="btn-filtro {% if categoria_atual == 'Destaques' %}ativo{% endif %}">Destaques</button>
+                <button class="btn-filtro {% if categoria_atual == 'Minerais' %}ativo{% endif %}">Minerais</button>
+                <button class="btn-filtro {% if categoria_atual == 'Pulseiras' %}ativo{% endif %}">Pulseiras</button>
+            </div>
+
+            <div class="ordenacao">
+                <label for="ordenar">Ordenar por:</label>
+                <select id="ordenar" class="select-ordenar">
+                    <option value="recentes" {% if ordem_atual == 'recentes' %}selected{% endif %}>Mais recentes</option>
+                    <option value="menor-preco" {% if ordem_atual == 'menor-preco' %}selected{% endif %}>Menor preço</option>
+                    <option value="maior-preco" {% if ordem_atual == 'maior-preco' %}selected{% endif %}>Maior preço</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="grade-produtos" id="grade-produtos">
+            {% for produto in page_obj %}
+                <div class="card-produto">
+                    <div class="img-produto">
+                        <img src="{% static 'minearts_app/img/'|add:produto.img %}" alt="{{ produto.nome }}">
+                    </div>
+
+                    <div class="card-informacoes">
+                        <h3 class="titulo-produto">{{ produto.nome }}</h3>
+                        <p class="preco-produto">R$ {{ produto.preco|floatformat:2 }}</p>
+                        
+                        <div class="controle-quantidade" style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                            <button class="btn-qtd btn-menos">-</button>
+                            <span class="qtd-numero">1</span>
+                            <button class="btn-qtd btn-mais">+</button>
+                        </div>
+                        
+                        {% if produto.disponivel %}
+                            <button class="btn-adicionar-grid">Adicionar</button>
+                        {% else %}
+                            <button class="btn-adicionar-grid" disabled style="background-color: #B6ADC0; cursor: not-allowed;">Esgotado</button>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <p style="grid-column: 1 / -1; text-align: center;">Nenhum produto encontrado no momento.</p>
+            {% endfor %}
+        </section>
+    
+            <div class="paginacao" id="paginacao" style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 8px; margin-top: 50px; margin-bottom: 50px; width: 100%; grid-column: 1 / -1;">
+    
+                {% if page_obj.has_previous %}
+                    <a href="?categoria={{ categoria_atual }}&ordem={{ ordem_atual }}&page={{ page_obj.previous_page_number }}" class="btn-seta" style="display: flex; align-items: center; justify-content: center; text-decoration: none; width: 35px; height: 35px; border-radius: 50%; border: 1px solid #735D8C; color: #735D8C; background-color: transparent;">&lt;</a>
+                {% else %}
+                    <button class="btn-seta" disabled style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; border: 1px solid #ccc; color: #ccc; cursor: not-allowed; background-color: transparent;">&lt;</button>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <button class="num-pagina ativo" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; background-color: #735D8C; color: white; border: none; font-weight: bold; cursor: default;">{{ num }}</button>
+                    {% else %}
+                        <a href="?categoria={{ categoria_atual }}&ordem={{ ordem_atual }}&page={{ num }}" class="num-pagina" style="display: flex; align-items: center; justify-content: center; text-decoration: none; width: 35px; height: 35px; border-radius: 50%; border: 1px solid #735D8C; color: #735D8C; background-color: transparent;">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <a href="?categoria={{ categoria_atual }}&ordem={{ ordem_atual }}&page={{ page_obj.next_page_number }}" class="btn-seta" style="display: flex; align-items: center; justify-content: center; text-decoration: none; width: 35px; height: 35px; border-radius: 50%; border: 1px solid #735D8C; color: #735D8C; background-color: transparent;">&gt;</a>
+                {% else %}
+                    <button class="btn-seta" disabled style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; border: 1px solid #ccc; color: #ccc; cursor: not-allowed; background-color: transparent;">&gt;</button>
+                {% endif %}
+
+                <span class="texto-pagina" style="margin-left: 20px; font-family: 'DM Sans', sans-serif; color: #4A4A4A; font-size: 16px;">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+            </div>
+
+            <span class="texto-pagina" style="margin-left: 15px;">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+        </div>
+        
+        <div class="paginacao" id="paginacao"></div>
+    </main>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'minearts_app/js/produtos.js' %}"></script>
+{% endblock %}

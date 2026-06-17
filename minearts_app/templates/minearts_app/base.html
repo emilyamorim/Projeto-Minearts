@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mineart.s</title>
+
+    <link rel="stylesheet" href="{% static 'minearts_app/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'minearts_app/css/base.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <header id="header">
+        <div class="header">
+            <div class="logo-navbar">
+                <div class="header-logo">
+                    <img src="{% static 'minearts_app/img/Mineart.s Logo.svg' %}" alt="Logo do Mineart.s">
+                </div>
+
+                <nav>
+                    <ul class="navbar">
+                        <li class="link"><a href="{% url 'minearts_app:index' %}">Início</a></li>
+                        <li class="link"><a href="{% url 'minearts_app:produtos' %}">Produtos</a></li>
+                        <li class="link"><a href="{% url 'minearts_app:sobre' %}">Sobre</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="header-btn">
+                <div class="header-busca">
+                    <input type="search" placeholder="Digite aqui...">
+                    <img class="icone-lupa" src="{% static 'minearts_app/img/icon/Icone - lupa.svg' %}" alt="Icone de Lupa">
+                </div>
+
+                <div class="header-carrinho">
+                    <a href="#">
+                        <img src="{% static 'minearts_app/img/icon/Icone - carrinho.svg' %}" class="icone-carrinho" alt="Icone carrinho">
+                    </a>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn-entrar"><a href="#">Entrar</a></button>
+                    <button class="btn-cadastro"><a href="#">Cadastro</a></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer id="footer">
+        <div class="footer">
+            <div class="footer-logo">
+                <div class="footer-img">
+                    <img src="{% static 'minearts_app/img/Mineart.s Logo.svg' %}" alt="Logo mineart.s">
+                </div>
+                <p>Feito com amor, paciência e a energia do mar.</p>
+            </div>
+
+            <div class="footer-mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126873.74970277905!2d-35.13255186533943!3d-6.419137721192459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b29d0d1c8e5745%3A0xe2ee0036f8490433!2sBa%C3%ADa%20Formosa%20-%20RN!5e0!3m2!1spt-BR!2sbr!4v1779493861867!5m2!1spt-BR!2sbr"></iframe>
+            </div>
+
+            <nav>
+                <ul class="footer-navbar">
+                    <li><a href="{% url 'minearts_app:index' %}">Início</a></li>
+                    <li><a href="{% url 'minearts_app:produtos' %}">Produtos</a></li>
+                    <li><a href="{% url 'minearts_app:sobre' %}">Sobre</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-redes-sociais">
+                <h3>Redes Sociais</h3>
+                <a href="#">
+                    <img src="{% static 'minearts_app/img/icon/Icone-whats.svg' %}" alt="Icone Whatsapp">
+                </a>
+                <a href="#">
+                    <img src="{% static 'minearts_app/img/icon/Icone-insta.svg' %}" alt="Icone instagram">
+                </a>
+                <a href="#">
+                    <img src="{% static 'minearts_app/img/icon/Icone-facebook.svg' %}" alt="Icone Facebook">
+                </a>
+            </div>
+
+            <div class="footer-direitos">
+                © 2026 Mineart.s - Todos os direitos reservados
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'minearts_app/js/main.js' %}"></script>
+    
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+{% extends 'minearts_app/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static 'minearts_app/css/inicio.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="main">
+    <section class="secao-banner">
+        <div class="textos-banner">
+            <h1 class="titulo-banner">Artesanato com Alma</h1>
+            <p class="texto-banner">Descubra nossas peças únicas em macramê, colares e pulseiras inspiradas nas praias de Baía Formosa.</p>
+            <button class="btn-encomende">Encomende Agora</button>
+        </div>
+
+        <div class="banner">
+            <img src="{% static 'minearts_app/img/banner.png' %}" alt="Banner">
+        </div>
+    </section>
+
+    <section class="secao-categoria-destaque">
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path
+                    d="M0,10
+                    C180,10 360,80 540,50
+                    C720,20 900,70 1080,40
+                    C1260,10 1380,50 1440,30
+                    L1440,120
+                    L0,120
+                    Z">
+                </path>
+            </svg>
+        </div>
+
+        <div class="categoria-destaque">
+            <h2 class="subtitulo">Categoria em Destaque</h2>
+
+            <div class="container swiper">
+                <div class="cards">
+                    <ul class="card-list swiper-wrapper">
+                        <li class="card-item swiper-slide">
+                            <div class="card-img">
+                                <img src="{% static 'minearts_app/img/categoria_destaque/produto-1.png' %}" class="produto-img" alt="Pulseira de miçangas">
+                            </div>
+                            <h3 class="titulo-produto">Pulseira de miçangas</h3>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-img">
+                                <img src="{% static 'minearts_app/img/categoria_destaque/produto-2.png' %}" class="produto-img" alt="Pulseira Oceano">
+                            </div>
+                            <h3 class="titulo-produto">Pulseira Oceano</h3>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-img">
+                                <img src="{% static 'minearts_app/img/categoria_destaque/produto-3.png' %}" class="produto-img" alt="Pulseira Oceano">
+                            </div>
+                            <h3 class="titulo-produto">Pulseira Oceano</h3>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-img">
+                                <img src="{% static 'minearts_app/img/categoria_destaque/produto-4.png' %}" class="produto-img" alt="Pulseira Oceano">
+                            </div>
+                            <h3 class="titulo-produto">Pulseira Oceano</h3>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-img">
+                                <img src="{% static 'minearts_app/img/categoria_destaque/produto-5.png' %}" class="produto-img" alt="Pulseira Oceano">
+                            </div>
+                            <h3 class="titulo-produto">Pulseira Oceano</h3>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-img">
+                                <img src="{% static 'minearts_app/img/categoria_destaque/produto-6.png' %}" class="produto-img" alt="Pulseiras">
+                            </div>
+                            <h3 class="titulo-produto">Pulseiras</h3>
+                        </li>
+                    </ul>
+
+                    <div class="swiper-pagination"></div>
+
+                    <div class="swiper-slide-button swiper-button-prev">
+                        <img src="{% static 'minearts_app/img/icon/seta-esquerda.svg' %}" alt="Anterior">
+                    </div>
+                    <div class="swiper-slide-button swiper-button-next">
+                        <img src="{% static 'minearts_app/img/icon/seta-direita.svg' %}" alt="Próximo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="secao-produtos-diversos">
+        <h2 class="subtitulo">Produtos Diversos</h2>
+
+        <div class="container-cards">
+            {% for produto in lista_produtos %}
+                <div class="card-produto">
+                    <div class="img-produto">
+                        <img src="{% static 'minearts_app/img/'|add:produto.img %}" alt="{{ produto.nome }}">
+                    </div>
+
+                    <div class="card-informacoes">
+                        <h3 class="titulo-produto">{{ produto.nome }}</h3>
+                        <p class="preco-produto">R$ {{ produto.preco|floatformat:2 }}</p>
+                        
+                        {% if produto.disponivel %}
+                            <button class="btn-adicionar">Adicionar</button>
+                        {% else %}
+                            <button class="btn-adicionar" disabled style="background-color: gray;">Esgotado</button>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="secao-encomenda">
+        <h2 class="subtitulo">Informações Adicionais</h2>
+
+        <div class="container-cards-encomenda">
+            <div class="card-encomenda">
+                <h3 class="titulo-encomenda">
+                    <img src="{% static 'minearts_app/img/icon/Icone-atencao.svg' %}" alt="Icone atenção">
+                    Informações
+                </h3>
+
+                <ol class="lista-informacoes">
+                    <li>Adicione os produtos ao carrinho e finalize o pedido.</li>
+                    <li>Uma mensagem automática será enviada para o nosso WhatsApp com o resumo.</li>
+                    <li>Combinaremos os detalhes, personalizações e entrega diretamente com você!</li>
+                </ol>
+            </div>
+
+            <div class="card-encomenda">
+                <h3 class="titulo-encomenda">
+                    <img src="{% static 'minearts_app/img/icon/Icone-instagram.svg' %}" alt="Icone instagram">
+                    Nossas Redes
+                </h3>
+
+                <p>Acompanhe nosso processo criativo e novidades diárias no Instagram.</p>
+
+                <div class="card-instagram">
+                    <p class="logo-M">M</p>
+                    <p class="nome-instagram">
+                        <a href="#">@mineart.s</a>
+                        <span>Artesanato & Macramê</span>
+                    </p>
+                    <button class="btn-seguir"><a href="#">Seguir</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="{% static 'minearts_app/js/carrossel.js' %}"></script>
+{% endblock %}

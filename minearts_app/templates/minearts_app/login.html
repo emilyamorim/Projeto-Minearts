@@ -1,76 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+{% extends 'minearts_app/base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block extra_css %}
+        <link rel="stylesheet" href="{% static 'minearts_app/css/login.css' %}">
+{% endblock %}
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/login.css">
-
-    <title>Login</title>
-</head>
-
-<body>
-
-    <!-- HEADER -->
-    <header class="header">
-
-        <!-- LOGO HEADER -->
-        <img 
-            src="../img/Mineart.s Logo.svg" 
-            alt="Logo"
-            class="header-logo"
-        >
-
-        <!-- MENU -->
-        <nav class="menu">
-            <a href="/index.html" class="active">Início</a>
-            <a href="/src/pages/produtos.html">Produtos</a>
-            <a href="/src/pages/sobre.html">Sobre</a>
-        </nav>
-
-        <!-- AÇÕES -->
-        <div class="header-actions">
-
-            <!-- PESQUISA -->
-            <div class="search-box">
-                <input type="text" placeholder="Digite aqui...">
-                <span>⌕</span>
-            </div>
-
-            <!-- CARRINHO -->
-            <div class="cart">
-                <img 
-                    src="../img/icon/Icone - carrinho.svg"
-                    alt="Carrinho"
-                    class="cart-icon"
-                >
-            </div>
-
-            <!-- LOGIN -->
-            <a href="login.html" class="login-btn">
-                Entrar
-            </a>
-
-            <!-- CADASTRO -->
-            <a href="cadastro.html" class="register-btn">
-                Cadastro
-            </a>
-
-        </div>
-
-    </header>
-
-    <!-- OVERLAY -->
-    <div class="overlay"></div>
-
-    <!-- LOGIN -->
-    <div class="login-container">
+{% block content %}
+    <main class="login-container">
 
         <!-- LOGO -->
         <img 
-            src="../img/Mineart.s Logo.svg"
+            src="{% static 'minearts_app/img/Mineart.s Logo.svg' %}"
             class="logo"
             alt="Logo"
         >
@@ -87,7 +27,7 @@
             <div class="input-box">
 
                 <img 
-                    src="../img/icon/user-icon.png"
+                    src="{% static 'minearts_app/img/icon/user-icon.png' %}"
                     class="icon"
                     alt="Usuário"
                 >
@@ -105,7 +45,7 @@
             <div class="input-box">
 
                 <img 
-                    src="../img/icon/lock-icon.png"
+                    src="{% static 'minearts_app/img/icon/lock-icon.png' %}"
                     class="icon"
                     alt="Senha"
                 >
@@ -138,7 +78,5 @@
 
         </div>
 
-    </div>
-
-</body>
-</html>
+    </main>
+{% endblock %}

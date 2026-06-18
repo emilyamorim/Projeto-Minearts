@@ -92,3 +92,9 @@ def produtos(request):
 
 def carrinho(request):
     return render(request, 'minearts_app/carrinho.html')
+
+def cadastro(request):
+    return render(request, 'minearts_app/cadastro.html')
+
+def login(request):
+    return render(request, 'minearts_app/login.html')

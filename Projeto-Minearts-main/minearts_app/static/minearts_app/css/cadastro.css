@@ -1,0 +1,92 @@
+/*
+========================================================
+CADASTRO
+========================================================
+*/
+
+.cadastro-container{
+    width:650px;
+    padding:50px;
+}
+
+/*
+========================================================
+ROW CAMPOS
+========================================================
+*/
+.row{
+    display:flex;
+    align-items:flex-start;
+    gap:20px;
+
+    width:100%;
+}
+
+.field{
+    flex:1;
+}
+
+.field .input-box{
+    margin-bottom:0;
+}
+
+
+/*
+========================================================
+INPUTS DA ROW
+========================================================
+*/
+
+.field .input-box{
+    margin-bottom:0;
+}
+/*
+========================================================
+RESPONSIVO
+========================================================
+*/
+
+.center-link{
+    justify-content:center;
+}
+
+/*
+========================================================
+RESPONSIVO
+========================================================
+*/
+
+@media(max-width:700px){
+
+    .cadastro-container{
+        width:95%;
+        padding:25px;
+    }
+
+    .row{
+        flex-direction:column;
+        gap:0;
+    }
+
+    .header{
+        padding:0 20px;
+    }
+
+    .menu{
+        display:none;
+    }
+
+    .search-box{
+        display:none;
+    }
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+}
+
+.row .field{
+    display:flex;
+    flex-direction:column;
+}

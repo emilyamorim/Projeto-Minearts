@@ -1,0 +1,92 @@
+{% extends 'minearts_app/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'minearts_app/css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main class="login-container">
+
+        <!-- LOGO -->
+        <img 
+            src="{% static 'minearts_app/img/Mineart.s Logo.svg' %}"
+            class="logo"
+            alt="Logo"
+        >
+
+        <h1>Entrar</h1>
+
+        <p>Acesse sua conta ou crie uma nova.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- EMAIL -->
+            <label>E-mail ou Usuário</label>
+            <div class="input-box">
+                <img 
+                    src="{% static 'minearts_app/img/icon/user-icon.png' %}"
+                    class="icon"
+                    alt="Usuário"
+                >
+                <input 
+                    type="text" 
+                    name="username" 
+                    placeholder="exemplo@gmail.com"
+                    required
+                >
+            </div>
+
+            <!-- SENHA -->
+            <label>Senha</label>
+            <div class="input-box">
+                <img 
+                    src="{% static 'minearts_app/img/icon/lock-icon.png' %}"
+                    class="icon"
+                    alt="Senha"
+                >
+                <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="12345"
+                    required
+                >
+            </div>
+
+            <!-- BOTÃO -->
+            <button type="submit">
+                Entrar
+            </button>
+
+        </form>
+
+        <!-- LINKS -->
+        <div class="links">
+            <a href="#">
+                Esqueceu a senha?
+            </a>
+            <a href="#">
+                Não tem conta?
+                <strong>Cadastre-se</strong>
+            </a>
+        </div>
+
+        ---
+        
+        <!-- SEÇÃO DE ITENS (Ajustada para dentro do container principal) -->
+        <div class="itens-container">
+            {% if itens %}
+                {% for item in itens %}
+                    <div class="card">
+                        <h2>{{ item.titulo }}</h2>
+                        <p>{{ item.descricao }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Nenhum item encontrado.</p>
+            {% endif %}
+        </div>
+
+    </main>
+{% endblock %}

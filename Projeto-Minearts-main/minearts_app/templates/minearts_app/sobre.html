@@ -1,0 +1,73 @@
+{% extends 'minearts_app/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'minearts_app/css/sobre.css' %}">
+
+    <style>
+        .titulo-contato,
+        .footer-titulo,
+        .footer-cidade {
+            font-family: "PT Serif", serif !important;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <main class="container-sobre">
+        <h1 class="titulo-pagina-sobre">Conheça o Mineart.s</h1>
+        
+        <section class="secao-historia">
+            <div class="coluna-texto">
+                <p>
+                    O <img src="{% static 'minearts_app/img/sobre_produtos/fonte-mangosalsa.png' %}" alt="Minearts" class="img-texto-minearts"> 
+                    surgiu em 2019, na cidade de Baía Formosa/RN, como um empreendimento focado em acessórios artesanais que utilizam minerais (naturais e artificiais) em suas peças.
+                </p>
+                <p>
+                    Com uma atenção mais voltada a moda praia, os artigos carregam cuidado e uma expressão que pertence ao litoral, mas não somente.
+                </p>
+                <p>
+                    O empreendimento também busca trazer artigos Geeks (animes, jogos e séries) e recentemente (2026) começa a trabalhar com peças feitas em crochê, sempre com a intenção de trazer o melhor, com um atendimento que busca ser empático e ágil.
+                </p>
+            </div>
+
+            <div class="coluna-imagens">
+                <div class="img-grande">
+                    <img src="{% static 'minearts_app/img/sobre_produtos/sobre-1.png' %}" alt="Colar com pedra na praia">
+                </div>
+                <div class="imgs-pequenas">
+                    <img src="{% static 'minearts_app/img/sobre_produtos/sobre-2.png' %}" alt="Colares com pedras">
+                    <img src="{% static 'minearts_app/img/sobre_produtos/sobre-3.png' %}" alt="Colares artesanais redondos">
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-contato">
+            <h2 class="titulo-contato">Entre em contato</h2>
+            
+            <form class="formulario-contato" action="#">
+                <div class="grupo-input">
+                    <label for="nome">Nome Completo</label>
+                    <div class="input-com-icone">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <input type="text" id="nome" placeholder="Nome" required>
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" placeholder="Digite sua mensagem..." rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-enviar">Enviar</button>
+            </form>
+        </section>
+    </main>
+{% endblock %}

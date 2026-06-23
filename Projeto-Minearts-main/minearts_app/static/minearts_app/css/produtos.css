@@ -1,0 +1,281 @@
+/* ==========================================
+   ESTILOS GERAIS E VARIÁVEIS (Cores do Figma)
+   ========================================== */
+:root {
+    --cor-principal: #7A629B;      /* Roxo dos botões ativos e ícones */
+    --cor-texto-escuro: #1A1A1A;  /* Cor dos títulos */
+    --cor-texto-mutado: #707070;  /* Preços e textos secundários */
+    --cor-borda: #E2E8F0;         /* Cinza claro dos cards e inputs */
+    --cor-fundo-card: #FFFFFF;
+    --fonte-principal: 'Inter', sans-serif; /* Substitua pela fonte real do Figma se necessário */
+}
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: #FAFAFA;
+    color: var(--cor-texto-escuro);
+    margin: 0;
+    padding: 0;
+}
+
+/* Container que abraça todo o conteúdo da página */
+.container-produtos {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ==========================================
+   1. TOPO: TÍTULO, FILTROS E ORDENAÇÃO
+   ========================================== */
+.topo-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.titulo-pagina {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Alinhamento dos botões em formato de cápsula */
+.filtros-categorias {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-filtro {
+    background-color: transparent;
+    border: 1px solid var(--cor-principal);
+    color: var(--cor-principal);
+    padding: 8px 24px;
+    border-radius: 20px; /* Formato pílula/cápsula */
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Estado ativo (Botão "Todos") */
+.btn-filtro.ativo, .btn-filtro:hover {
+    background-color: var(--cor-principal);
+    color: #FFFFFF;
+}
+
+/* Menu de Ordenação (Lado Direito) */
+.ordenacao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--cor-texto-escuro);
+}
+
+.select-ordenar {
+    background-color: var(--cor-principal);
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    appearance: none; /* Remove a seta padrão do navegador */
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+}
+/* ==========================================
+   2. GRADE DE PRODUTOS (3 Colunas)
+   ========================================== */
+.grade-produtos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas idênticas */
+    gap: 30px; /* Espaço entre os cards */
+    margin-bottom: 48px;
+}
+
+/* Responsividade: vira 2 colunas em tablets e 1 em celulares */
+@media (max-width: 992px) {
+    .grade-produtos { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .grade-produtos { grid-template-columns: 1fr; }
+    .topo-produtos { flex-direction: column; align-items: flex-start; }
+}
+
+/* ==========================================
+   ESTILIZAÇÃO DO CARD DE PRODUTO
+   ========================================== */
+.card-produto {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: 16px; /* Cantos arredondados suaves */
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-produto:hover {
+    transform: translateY(-4px); /* Efeito sutil ao passar o mouse */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Container da Foto */
+.img-produto {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Força a foto a ser perfeitamente quadrada */
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.img-produto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a foto preencher o quadrado sem distorcer */
+}
+
+/* Textos e Informações do Card */
+.card-informacoes {
+    text-align: center;
+}
+
+.titulo-produto {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cor-texto-escuro);
+    margin: 0 0 8px 0;
+}
+
+.preco-produto {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--cor-texto-mutated);
+    margin: 0 0 16px 0;
+}
+
+/* Botão Adicionar (Contorno Roxo) */
+.btn-adicionar-grid {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--cor-borda);
+    color: var(--cor-principal);
+    padding: 10px 0;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-adicionar-grid:hover {
+    border-color: var(--cor-principal);
+    background-color: #F9F6FC; /* Fundo roxo bem clarinho no hover */
+}
+
+/* ==========================================
+   CONTROLE DE QUANTIDADE (+ e -)
+   ========================================== */
+.controle-quantidade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 12px; /* Espaço entre a quantidade e o botão de Adicionar */
+}
+
+.btn-qtd {
+    background-color: #F0F0F0;
+    border: none;
+    color: var(--cor-texto-escuro);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.btn-qtd:hover {
+    background-color: var(--cor-borda);
+}
+
+.qtd-numero {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cor-texto-escuro);
+    min-width: 20px;
+    text-align: center;
+}
+
+/* ==========================================
+   3. PAGINAÇÃO (Rodapé da grade)
+   ========================================== */
+.paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+    position: relative;
+}
+
+.num-pagina, .btn-seta {
+    background: transparent;
+    border: 1px solid var(--cor-borda);
+    color: var(--cor-texto-mutado);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* Botões redondos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* Seta roxa da paginação */
+.btn-seta {
+    border-color: var(--cor-principal);
+    color: var(--cor-principal);
+}
+
+/* Página atual selecionada (Roxa) */
+.num-pagina.ativo {
+    background-color: var(--cor-principal);
+    color: #FFFFFF;
+    border-color: var(--cor-principal);
+}
+
+.num-pagina:hover:not(.ativo) {
+    background-color: #ECEFF1;
+}
+
+/* Texto "Página 1 de 10" deslocado para a direita */
+.texto-pagina {
+    position: absolute;
+    right: 0;
+    font-size: 14px;
+    color: var(--cor-texto-mutado);
+}
+
+@media (max-width: 600px) {
+    .paginacao { flex-direction: column; gap: 16px; }
+    .texto-pagina { position: static; }
+}

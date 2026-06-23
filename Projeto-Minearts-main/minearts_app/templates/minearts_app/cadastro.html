@@ -1,0 +1,175 @@
+{% extends 'minearts_app/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static 'minearts_app/css/cadastro.css' %}">
+{% endblock %}
+
+{% block content %}
+        <!-- CONTAINER -->
+    <main class="login-container cadastro-container">
+
+        <!-- LOGO -->
+        <img 
+            src="{% static 'minearts_app/img/Mineart.s Logo.svg' %}"
+            class="logo"
+            alt="Logo"
+        >
+
+        <h1>Cadastre-se</h1>
+
+        <p>Preencha os dados abaixo para criar sua conta.</p>
+
+        <form>
+
+            <!-- NOME -->
+            <label>Nome Completo</label>
+
+            <div class="input-box">
+
+                <img 
+                    src="{% static 'minearts_app/img/icon/user-icon.png' %}"
+                    class="icon"
+                    alt="Usuário"
+                >
+
+                <input 
+                    type="text"
+                    placeholder="Nome"
+                >
+
+            </div>
+
+            <!-- EMAIL -->
+            <label>E-mail</label>
+
+            <div class="input-box">
+
+                <img 
+                    src="{% static 'minearts_app/img/icon/email-icon.png' %}"
+                    class="icon"
+                    alt="Email"
+                >
+
+                <input 
+                    type="email"
+                    placeholder="Nome@exemplo.com"
+                >
+
+            </div>
+
+            <!-- DATA + CELULAR -->
+            <div class="row">
+
+                <!-- DATA -->
+                <div class="field">
+
+                    <label>Data de Nascimento</label>
+
+                    <div class="input-box">
+
+                        <img 
+                            src="{% static 'minearts_app/img/icon/calendar-icon.png' %}"
+                            class="icon"
+                            alt="Calendário"
+                        >
+
+                        <input type="date">
+
+                    </div>
+
+                </div>
+
+                <!-- CELULAR -->
+                <div class="field">
+
+                    <label>Celular</label>
+
+                    <div class="input-box">
+
+                        <img 
+                            src="{% static 'minearts_app/img/icon/phone-icon.png' %}"
+                            class="icon"
+                            alt="Celular"
+                        >
+
+                        <input 
+                            type="text"
+                            placeholder="(84) 99999-9999"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- SENHAS -->
+            <div class="row">
+
+                <!-- SENHA -->
+                <div class="field">
+
+                    <label>Senha</label>
+
+                    <div class="input-box">
+
+                        <img 
+                            src="{% static 'minearts_app/img/icon/lock-icon.png' %}"
+                            class="icon"
+                            alt="Senha"
+                        >
+
+                        <input 
+                            type="password"
+                            placeholder="********"
+                        >
+
+                    </div>
+
+                </div>
+
+                <!-- CONFIRMAR -->
+                <div class="field">
+
+                    <label>Confirme sua Senha</label>
+
+                    <div class="input-box">
+
+                        <img 
+                            src="{% static 'minearts_app/img/icon/lock-icon.png' %}"
+                            class="icon"
+                            alt="Senha"
+                        >
+
+                        <input 
+                            type="password"
+                            placeholder="********"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- BOTÃO -->
+            <button type="submit">
+                Cadastrar
+            </button>
+
+        </form>
+
+        <!-- LINK -->
+        <div class="links center-link">
+
+            <a href="login.html">
+                Já tem uma conta?
+                <strong>Faça Login</strong>
+            </a>
+
+        </div>
+
+    </main>
+{% endblock %}

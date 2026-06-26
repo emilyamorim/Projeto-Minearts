@@ -13,36 +13,6 @@ RESET
 
 /*
 ========================================================
-BODY
-========================================================
-*/
-
-body{
-    width:100%;
-    min-height:100vh;
-
-    position:relative;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    overflow:hidden;
-
-    /*
-    ========================================
-    IMAGEM DE FUNDO
-    ========================================
-    */
-    background-image:url("../img/background-login.png");
-
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-}
-
-/*
-========================================================
 OVERLAY ESCURO
 ========================================================
 */
@@ -70,7 +40,7 @@ HEADER
 
     background:white;
 
-    position:absolute;
+    position:fixed;
     top:0;
     left:0;
 
@@ -239,7 +209,7 @@ CARD LOGIN
 
     z-index:2;
 
-    margin-top:80px;
+    margin-top: 140px auto 60px auto;
 }
 
 /*
@@ -315,12 +285,14 @@ INPUT BOX
 body{
     width:100%;
     min-height:100vh;
-
+    display:flex;
+    flex-direction:column;
     background-image:url("../img/background-login.png");
 
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
+    background-attachment:fixed;
 }
 
 .input-box{

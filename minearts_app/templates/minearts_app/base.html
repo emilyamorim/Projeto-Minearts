@@ -21,12 +21,18 @@
                 </div>
 
                 <nav>
-                    <ul class="navbar">
+                    <ul class="navbar" id="navbar">
                         <li class="link"><a href="{% url 'minearts_app:index' %}">Início</a></li>
                         <li class="link"><a href="{% url 'minearts_app:produtos' %}">Produtos</a></li>
                         <li class="link"><a href="{% url 'minearts_app:sobre' %}">Sobre</a></li>
                     </ul>
                 </nav>
+
+                <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
 
             <div class="header-btn">
@@ -97,7 +103,8 @@
     {% endblock %}
 
     <script src="{% static 'minearts_app/js/main.js' %}"></script>
-    
+    <script src="{% static 'minearts_app/js/menuBurguer.js' %}"></script>
+
     {% block extra_js %}{% endblock %}
 
 </body>

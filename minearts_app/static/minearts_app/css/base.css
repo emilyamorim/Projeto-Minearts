@@ -130,6 +130,10 @@
     border-radius: 9999px;
 }
 
+.btn-cadastro:hover {
+    background-color: #735d8ccf;
+}
+
 .btn-cadastro > a {
     color: #FFFFFF;
     text-decoration: none;
@@ -165,6 +169,77 @@
     padding-bottom: 4px; 
 }
 
+/*
+========================================================
+HAMBÚRGUER
+========================================================
+*/
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #735D8C;
+    border-radius: 3px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animação X ao abrir */
+.hamburger.hamburger-ativo span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger.hamburger-ativo span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.hamburger-ativo span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/*
+========================================================
+MENU MOBILE (dropdown)
+========================================================
+*/
+
+.navbar.navbar-aberta {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: white;
+    border-top: 1px solid #E0DFDF;
+    padding: 10px 0;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+.navbar.navbar-aberta .link > a {
+    display: block;
+    padding: 14px 24px;
+    font-size: 18px;
+}
+
+.navbar.navbar-aberta .link > a:hover {
+    background: #f5f0fa;
+}
+
 @media (max-width: 1100px) {
     .header {
         padding: 0 20px;
@@ -196,9 +271,42 @@
     }
 }
 
+/* Tablet/mobile: esconde navbar inline, mostra hambúrguer */
+@media (max-width: 768px) {
+    .header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
+        padding: 16px 20px;
+        position: relative;
+    }
+
+    .logo-navbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .header-btn {
+        display: none;
+    }
+}
+
 @media (max-width: 500px) {
     .header-logo {
-        width: 140px;
+        width: 120px;
     }
 
     .header-logo img {

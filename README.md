@@ -1,5 +1,7 @@
 # Projeto Django — Minearts
 
+**E-commerce para a venda de joias e acessórios artesanais.**
+
 **Integrantes:** Clara Maria Avelino Ribeiro, Emily Amorim do Nascimento, Laíze Suelia da Silva Oliveira, Letícia Cibele Lima do Nascimento e Paula Kayalla Matias Bezerra
 
 ## Como rodar o projeto
@@ -27,5 +29,5 @@ Siga os passos abaixo para executar a aplicação em sua máquina:
    pip install django
 
 6. Rode o projeto no servidor:
-   ```bahs
+   ```bash
    python manage.py runserver

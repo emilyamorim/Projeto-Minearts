@@ -120,9 +120,11 @@ body {
 
 .cards {
     max-width: 1340px;
-    margin: 0 60px 35px;
+    width: 100%; 
+    margin: 0 auto 35px; /* Mudado de '0 60px 35px' para '0 auto 35px' (centraliza horizontalmente) */
     padding: 20px 10px;
     overflow: hidden;
+    position: relative; /* Importante para o posicionamento absoluto das setas do Swiper se necessário */
 }
 
 .card-list .produto-img {
@@ -183,6 +185,13 @@ body {
 /* SEÇÃO PRODUTOS DIVERSOS */
 .secao-produtos-diversos {
     padding: 64px 50px;
+}
+
+.container.swiper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .container-cards {

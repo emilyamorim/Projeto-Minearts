@@ -31,8 +31,8 @@ body {
 }
 
 .lista-carrinho {
-    border: 1px solid #D1D5DB;
-    border-radius: 8px;
+    border: 1px solid rgba(115, 93, 140, 0.3);
+    border-radius: 12px;
     padding: 0 24px;
     background-color: #ffffff;
 }
@@ -108,13 +108,13 @@ body {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: none;
+    border: 1px solid #000000;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
-    color: #735D8C;
+    color: #000000;
     transition: background-color 0.2s ease;
 }
 
@@ -153,6 +153,10 @@ body {
 }
 
 .subtitulo-sugestoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     font-family: "PT Serif", serif;
     font-weight: 700;
     font-size: 24px;
@@ -160,6 +164,13 @@ body {
     color: #000000;
     text-align: center;
     margin-bottom: 24px;
+}
+
+.subtitulo-sugestoes::before, .subtitulo-sugestoes::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #E5E7EB;
 }
 
 .cards-sugestoes {
@@ -598,4 +609,24 @@ body {
     .footer-redes-icones {
         justify-content: center;
     }
+}
+
+/* --- MOBILE E UX ADDITIONS --- */
+.btn-remover-item {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+.btn-remover-item:hover {
+    opacity: 1;
+}
+.icone-lixeira {
+    width: 22px;
+    height: 22px;
 }

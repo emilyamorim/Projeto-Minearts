@@ -41,17 +41,20 @@
                         <h3 class="titulo-produto">{{ produto.nome }}</h3>
                         <p class="preco-produto">R$ {{ produto.preco|floatformat:2 }}</p>
                         
-                        <div class="controle-quantidade" style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
-                            <button class="btn-qtd btn-menos">-</button>
-                            <span class="qtd-numero">1</span>
-                            <button class="btn-qtd btn-mais">+</button>
-                        </div>
-                        
-                        {% if produto.disponivel %}
-                            <button class="btn-adicionar-grid">Adicionar</button>
-                        {% else %}
-                            <button class="btn-adicionar-grid" disabled style="background-color: #B6ADC0; cursor: not-allowed;">Esgotado</button>
-                        {% endif %}
+                        <form action="{% url 'minearts_app:adicionar_carrinho' produto.id %}" method="POST">
+                            {% csrf_token %}
+                            <div class="controle-quantidade" style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                                <button type="button" class="btn-qtd btn-menos" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value) - 1)">-</button>
+                                <input type="number" name="quantidade" class="qtd-numero" value="1" min="1" style="width: 40px; text-align: center; border: none; background: transparent; font-weight: bold; color: #4A4A4A;">
+                                <button type="button" class="btn-qtd btn-mais" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value) + 1">+</button>
+                            </div>
+                            
+                            {% if produto.disponivel %}
+                                <button type="submit" class="btn-adicionar-grid">Adicionar</button>
+                            {% else %}
+                                <button type="button" class="btn-adicionar-grid" disabled style="background-color: #B6ADC0; cursor: not-allowed;">Esgotado</button>
+                            {% endif %}
+                        </form>
                     </div>
                 </div>
             {% empty %}

@@ -6,13 +6,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'minearts_app/css/sobre.css' %}">
+    <link rel="stylesheet" href="{% static 'minearts_app/css/sobre.css' %}?v=4">
 
     <style>
         .titulo-contato,
         .footer-titulo,
         .footer-cidade {
             font-family: "PT Serif", serif !important;
+        }
+
+        .secao-contato {
+            max-width: 400px !important;
+            margin: 0 auto !important;
+            padding: 0 20px;
+        }
+
+        .grupo-input label {
+            font-size: 16px !important;
+            font-weight: 600 !important;
         }
     </style>
 {% endblock %}
@@ -49,7 +60,7 @@
         <section class="secao-contato">
             <h2 class="titulo-contato">Entre em contato</h2>
             
-            <form class="formulario-contato" action="#">
+            <form id="form-contato" class="formulario-contato" action="#">
                 <div class="grupo-input">
                     <label for="nome">Nome Completo</label>
                     <div class="input-com-icone">
@@ -70,4 +81,15 @@
             </form>
         </section>
     </main>
+
+    <script>
+        document.getElementById('form-contato').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var nome = document.getElementById('nome').value;
+            var mensagem = document.getElementById('mensagem').value;
+            var texto = "Olá, meu nome é " + nome + ". " + mensagem;
+            var url = "https://wa.me/5584994996028?text=" + encodeURIComponent(texto);
+            window.open(url, '_blank');
+        });
+    </script>
 {% endblock %}

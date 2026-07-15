@@ -3,7 +3,7 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="{% static 'minearts_app/css/inicio.css' %}">
+    <link rel="stylesheet" href="{% static 'minearts_app/css/inicio.css' %}?v=4">
 {% endblock %}
 
 {% block content %}
@@ -12,7 +12,7 @@
         <div class="textos-banner">
             <h1 class="titulo-banner">Artesanato com Alma</h1>
             <p class="texto-banner">Descubra nossas peças únicas em macramê, colares e pulseiras inspiradas nas praias de Baía Formosa.</p>
-            <button class="btn-encomende">Encomende Agora</button>
+            <a href="{% url 'minearts_app:produtos' %}" class="btn-encomende" style="text-decoration:none; display:inline-block; text-align:center;">Encomende Agora</a>
         </div>
 
         <div class="banner">
@@ -92,7 +92,7 @@
         </div>
     </section>
 
-    <section class="secao-produtos-diversos">
+    <section class="secao-produtos-diversos" id="produtos-diversos">
         <h2 class="subtitulo">Produtos Diversos</h2>
 
         <div class="container-cards">
@@ -106,16 +106,20 @@
                         <h3 class="titulo-produto">{{ produto.nome }}</h3>
                         <p class="preco-produto">R$ {{ produto.preco|floatformat:2 }}</p>
                         
-                        {% if produto.disponivel %}
-                            <button class="btn-adicionar">Adicionar</button>
-                        {% else %}
-                            <button class="btn-adicionar" disabled style="background-color: gray;">Esgotado</button>
-                        {% endif %}
+                        <form action="{% url 'minearts_app:adicionar_carrinho' produto.id %}" method="POST" style="margin-top: 15px; width: 100%;">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantidade" value="1">
+                            {% if produto.disponivel %}
+                                <button type="submit" class="btn-adicionar">Adicionar</button>
+                            {% else %}
+                                <button type="button" class="btn-adicionar" disabled style="background-color: gray;">Esgotado</button>
+                            {% endif %}
+                        </form>
                     </div>
                 </div>
             {% endfor %}
         </div>
-    </section>
+
 
     <section class="secao-encomenda">
         <h2 class="subtitulo">Informações Adicionais</h2>
@@ -145,18 +149,58 @@
                 <div class="card-instagram">
                     <p class="logo-M">M</p>
                     <p class="nome-instagram">
-                        <a href="#">@mineart.s</a>
+                        <a href="https://www.instagram.com/mineart.s/" target="_blank" rel="noopener noreferrer">@mineart.s</a>
                         <span>Artesanato & Macramê</span>
                     </p>
-                    <button class="btn-seguir"><a href="#">Seguir</a></button>
+                    <button class="btn-seguir"><a href="https://www.instagram.com/mineart.s/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: #FFFFFF;">Seguir</a></button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- MODAL PROMOCIONAL (ESTILO ENJOEI) -->
+    <div id="modal-guia" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="fecharModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            <div class="modal-logo">
+                <img src="{% static 'minearts_app/img/Mineart.s Logo.svg' %}" alt="Logo Mineart.s">
+            </div>
+            <div class="modal-banner">
+                <img src="{% static 'minearts_app/img/categoria_destaque/produto-1.png' %}" alt="Artesanato Minearts" style="opacity: 0.4;">
+                <div class="modal-banner-texto">
+                    <h2>Bem-vindo(a)</h2>
+                    <p style="text-transform: none; font-size: 16px;">ao MineArt.s</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h3>Crie sua conta de forma gratuita</h3>
+                <p>faça seu cadastro agora para salvar produtos no carrinho e facilitar suas encomendas futuras!</p>
+                <a href="{% url 'minearts_app:cadastro' %}" class="modal-btn">criar conta</a>
+                <p class="modal-termos">
+                    ao criar uma conta, você concorda com nossos <span>termos de serviço</span> e <span>política de privacidade</span>.
+                </p>
+            </div>
+        </div>
+    </div>
+
 </main>
 {% endblock %}
 
 {% block extra_js %}
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="{% static 'minearts_app/js/carrossel.js' %}"></script>
+    <script>
+        function fecharModal() {
+            document.getElementById('modal-guia').style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const modal = document.getElementById('modal-guia');
+                if (modal) {
+                    modal.style.display = 'flex';
+                }
+            }, 1500); // Aparece após 1.5 segundos
+        });
+    </script>
 {% endblock %}

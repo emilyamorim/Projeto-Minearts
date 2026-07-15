@@ -7,7 +7,7 @@
     <title>Mineart.s</title>
 
     <link rel="stylesheet" href="{% static 'minearts_app/css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'minearts_app/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'minearts_app/css/base.css' %}?v=2">
     
     {% block extra_css %}{% endblock %}
 </head>
@@ -36,14 +36,19 @@
             </div>
 
             <div class="header-btn">
-                <div class="header-busca">
-                    <input type="search" placeholder="Digite aqui...">
-                    <img class="icone-lupa" src="{% static 'minearts_app/img/icon/Icone - lupa.svg' %}" alt="Icone de Lupa">
-                </div>
+                <form class="header-busca" method="GET" action="{% url 'minearts_app:produtos' %}">
+                    <input type="search" name="q" placeholder="Digite aqui..." value="{{ request.GET.q }}">
+                    <button type="submit" class="icone-lupa" style="background:none;border:none;padding:0;outline:none;display:flex;align-items:center;justify-content:center;">
+                        <img src="{% static 'minearts_app/img/icon/Icone - lupa.svg' %}" alt="Icone de Lupa" style="width: 100%; height: 100%;">
+                    </button>
+                </form>
 
                 <div class="header-carrinho">
-                    <a href="{% url 'minearts_app:carrinho' %}">
+                    <a href="{% url 'minearts_app:carrinho' %}" style="position: relative; display: inline-block;">
                         <img src="{% static 'minearts_app/img/icon/Icone - carrinho.svg' %}" class="icone-carrinho" alt="Icone carrinho">
+                        {% if carrinho_qtd > 0 %}
+                            <span class="badge-carrinho">{{ carrinho_qtd }}</span>
+                        {% endif %}
                     </a>
                 </div>
 
@@ -90,9 +95,6 @@
                 <a href="https://www.instagram.com/mineart.s/" target="_blank" rel="noopener noreferrer">
                     <img src="{% static 'minearts_app/img/icon/Icone-insta.svg' %}" alt="Icone instagram">
                 </a>
-                <a href="#">
-                    <img src="{% static 'minearts_app/img/icon/Icone-facebook.svg' %}" alt="Icone Facebook">
-                </a>
             </div>
 
             <div class="footer-direitos">
@@ -106,6 +108,46 @@
     <script src="{% static 'minearts_app/js/menuBurguer.js' %}"></script>
 
     {% block extra_js %}{% endblock %}
+
+    <script>
+        document.querySelectorAll('form[action*="adicionar-carrinho"]').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const btn = this.querySelector('button[type="submit"]');
+                if(!btn) return;
+                
+                const btnText = btn.textContent;
+                btn.textContent = 'Adicionando...';
+                
+                fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                }).then(response => {
+                    btn.textContent = btnText;
+                    if(response.ok) {
+                        let toast = document.getElementById('toast-carrinho');
+                        if (!toast) {
+                            toast = document.createElement('div');
+                            toast.id = 'toast-carrinho';
+                            toast.innerHTML = 'Produto adicionado! <a href="{% url "minearts_app:carrinho" %}" style="color: #FBBF24; text-decoration: underline; margin-left: 10px; font-weight: bold;">Ver Carrinho</a>';
+                            toast.style.cssText = 'position: fixed; bottom: 30px; right: 30px; background: #735D8C; color: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-family: "DM Sans", sans-serif; font-size: 16px; z-index: 9999; opacity: 0; transform: translateY(20px); transition: all 0.3s ease;';
+                            document.body.appendChild(toast);
+                        }
+                        
+                        toast.offsetHeight; // reflow
+                        toast.style.opacity = '1';
+                        toast.style.transform = 'translateY(0)';
+                        
+                        setTimeout(() => {
+                            toast.style.opacity = '0';
+                            toast.style.transform = 'translateY(20px)';
+                        }, 4000);
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>

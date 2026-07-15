@@ -7,7 +7,7 @@
     <title>Mineart.s</title>
 
     <link rel="stylesheet" href="{% static 'minearts_app/css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'minearts_app/css/base.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'minearts_app/css/base.css' %}?v=3">
     
     {% block extra_css %}{% endblock %}
 </head>
@@ -25,6 +25,17 @@
                         <li class="link"><a href="{% url 'minearts_app:index' %}">Início</a></li>
                         <li class="link"><a href="{% url 'minearts_app:produtos' %}">Produtos</a></li>
                         <li class="link"><a href="{% url 'minearts_app:sobre' %}">Sobre</a></li>
+                        
+                        <!-- Opções apenas para mobile -->
+                        <li class="link mobile-only"><a href="{% url 'minearts_app:carrinho' %}">Carrinho {% if carrinho_qtd > 0 %}({{ carrinho_qtd }}){% endif %}</a></li>
+                        <li class="link mobile-only"><a href="{% url 'minearts_app:login' %}">Entrar</a></li>
+                        <li class="link mobile-only"><a href="{% url 'minearts_app:cadastro' %}">Cadastro</a></li>
+                        <li class="mobile-only" style="padding: 14px 24px;">
+                            <form method="GET" action="{% url 'minearts_app:produtos' %}" style="display:flex; gap: 8px;">
+                                <input type="search" name="q" placeholder="Buscar produtos..." value="{{ request.GET.q }}" style="flex:1; padding: 8px 12px; border-radius: 4px; border: 1px solid #B6ADC0; font-family: 'DM Sans', sans-serif;">
+                                <button type="submit" style="padding: 8px 16px; border-radius: 4px; background: #735D8C; color: white; border: none; font-family: 'DM Sans', sans-serif; font-weight: bold;">Ir</button>
+                            </form>
+                        </li>
                     </ul>
                 </nav>
 
@@ -123,27 +134,53 @@
                     method: 'POST',
                     body: new FormData(this),
                     headers: { 'X-Requested-With': 'XMLHttpRequest' }
-                }).then(response => {
+                })
+                .then(response => response.json())
+                .then(data => {
                     btn.textContent = btnText;
-                    if(response.ok) {
-                        let toast = document.getElementById('toast-carrinho');
-                        if (!toast) {
-                            toast = document.createElement('div');
-                            toast.id = 'toast-carrinho';
-                            toast.innerHTML = 'Produto adicionado! <a href="{% url "minearts_app:carrinho" %}" style="color: #FBBF24; text-decoration: underline; margin-left: 10px; font-weight: bold;">Ver Carrinho</a>';
-                            toast.style.cssText = 'position: fixed; bottom: 30px; right: 30px; background: #735D8C; color: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-family: "DM Sans", sans-serif; font-size: 16px; z-index: 9999; opacity: 0; transform: translateY(20px); transition: all 0.3s ease;';
-                            document.body.appendChild(toast);
+                    
+                    // Atualizar visualmente os contadores de carrinho
+                    if(data && data.total_itens !== undefined) {
+                        let cartLink = document.querySelector('.header-carrinho a');
+                        if (cartLink) {
+                            let badge = cartLink.querySelector('.badge-carrinho');
+                            if (!badge && data.total_itens > 0) {
+                                badge = document.createElement('span');
+                                badge.className = 'badge-carrinho';
+                                cartLink.appendChild(badge);
+                            }
+                            if (badge) {
+                                badge.textContent = data.total_itens;
+                                if(data.total_itens === 0) badge.remove();
+                            }
                         }
                         
-                        toast.offsetHeight; // reflow
-                        toast.style.opacity = '1';
-                        toast.style.transform = 'translateY(0)';
-                        
-                        setTimeout(() => {
-                            toast.style.opacity = '0';
-                            toast.style.transform = 'translateY(20px)';
-                        }, 4000);
+                        let mobileLink = document.querySelector('.link.mobile-only a[href*="carrinho"]');
+                        if (mobileLink) {
+                            mobileLink.textContent = data.total_itens > 0 ? 'Carrinho (' + data.total_itens + ')' : 'Carrinho';
+                        }
                     }
+
+                    // Exibir toast
+                    let toast = document.getElementById('toast-carrinho');
+                    if (!toast) {
+                        toast = document.createElement('div');
+                        toast.id = 'toast-carrinho';
+                        toast.innerHTML = 'Produto adicionado! <a href="{% url "minearts_app:carrinho" %}" style="color: #FBBF24; text-decoration: underline; margin-left: 10px; font-weight: bold;">Ver Carrinho</a>';
+                        toast.style.cssText = 'position: fixed; bottom: 30px; right: 30px; background: #735D8C; color: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-family: "DM Sans", sans-serif; font-size: 16px; z-index: 9999; opacity: 0; transform: translateY(20px); transition: all 0.3s ease;';
+                        document.body.appendChild(toast);
+                    }
+                    
+                    toast.offsetHeight; // reflow
+                    toast.style.opacity = '1';
+                    toast.style.transform = 'translateY(0)';
+                    
+                    setTimeout(() => {
+                        toast.style.opacity = '0';
+                        toast.style.transform = 'translateY(20px)';
+                    }, 4000);
+                }).catch(() => {
+                    btn.textContent = btnText;
                 });
             });
         });

@@ -71,6 +71,12 @@ def adicionar_carrinho(request, produto_id):
         carrinho[produto_id_str] = int(quantidade)
         
     request.session['carrinho'] = carrinho
+    
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        from django.http import JsonResponse
+        total_itens = sum(carrinho.values())
+        return JsonResponse({'total_itens': total_itens})
+        
     return redirect('minearts_app:carrinho')
 
 def remover_carrinho(request, produto_id):

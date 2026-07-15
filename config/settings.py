@@ -131,3 +131,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuração para o Vercel: Salvar sessões (carrinho) nos cookies ao invés do banco de dados (que é read-only no Vercel)
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
